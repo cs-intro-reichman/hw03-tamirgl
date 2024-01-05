@@ -17,16 +17,19 @@ public class Calendar {
 		// Advances the date and the day-of-the-week from 1/1/1900 till 31/12/1999, inclusive.
 	    // Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday, prints "Sunday".
 	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
-		int yearInput = Integer.parseInt(args[0]);
 	    int debugDaysCounter = 0;
-		int sundaysOn1stOfMonthCounter = 0;
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition 
+		int yearInput = Integer.parseInt(args[0]);
+		int sundaysOn1stOfMonthCounter = 0;
+
 	 	while (!(dayOfMonth == 1 && month == 1 && year == yearInput)) {
 	 		advance();
         }
+
 		while (!(dayOfMonth == 1 && month == 1 && year == yearInput + 1)) {
 	 		System.out.printf("%d/%d/%d%s\n", dayOfMonth, month, year, dayOfWeek == 1 ? " Sunday" : "");
+
 			if (dayOfWeek == 1 && dayOfMonth == 1) {
 				sundaysOn1stOfMonthCounter++;
 			}
@@ -35,10 +38,11 @@ public class Calendar {
 	 		debugDaysCounter++;
 	 		//// If you want to stop the loop after n days, replace the condition of the
 	 		//// if statement with the condition (debugDaysCounter == n)
-	 		// if (false) {
-	 		// 	break;
-	 		// }
+	 		if (false) {
+	 			break;
+	 		}
         }
+
 		System.out.println("During the 20th century, " + sundaysOn1stOfMonthCounter + " Sundays fell on the first day of the month");
 	 }
 	
@@ -56,10 +60,12 @@ public class Calendar {
 		if (dayOfMonth > nDaysInMonth) {
 			month++;
 			dayOfMonth = 1;
+
 			if (month > 12) {
 				year++;
 				month = 1;
 			}
+
 			nDaysInMonth = nDaysInMonth(month, year);
 		}
 	 } 
